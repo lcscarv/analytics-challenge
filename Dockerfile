@@ -1,0 +1,25 @@
+FROM python:3.7
+
+ARG AWS_ACCESS_KEY_ID \
+    AWS_SECRET_ACCESS_KEY \
+    S3_ELEMENTARY_BUCKET_NAME \
+    S3_ELEMENTARY_BUCKET_PATH
+
+ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+    AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+    S3_ELEMENTARY_BUCKET_NAME=$S3_ELEMENTARY_BUCKET_NAME \
+    S3_ELEMENTARY_BUCKET_PATH=$S3_ELEMENTARY_BUCKET_PATH
+
+COPY . /opt/
+
+COPY profiles.yml /root/.dbt/
+
+RUN pip install -U pip
+
+RUN pip install -r /opt/requirements.txt
+
+WORKDIR /opt/
+
+RUN chmod a+x entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "entrypoint.sh"]

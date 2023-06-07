@@ -1,0 +1,83 @@
+image: python:3.7.3
+
+definitions:
+  steps:
+    - step: &release
+        name: Deploy DBT Image
+        script:
+          - chmod a+x ./bump.sh
+          - ./bump.sh
+          - |
+            export DBT_SF_TAG=$(cat dbt_project.yml | grep ^version: | grep -o "'.*'" | tr -d "'")
+          - |
+            docker build -t prod_dbt_snowflake_dsaas . \
+            --build-arg AWS_ACCESS_KEY_ID=${AWS_KEY_YURI} \
+            --build-arg AWS_SECRET_ACCESS_KEY=${AWS_SECRET_YURI} \
+            --build-arg S3_ELEMENTARY_BUCKET_NAME=${S3_ELEMENTARY_BUCKET_NAME} \
+            --build-arg S3_ELEMENTARY_BUCKET_PATH=${S3_ELEMENTARY_BUCKET_PATH}
+          - pipe: atlassian/aws-ecr-push-image:1.6.2
+            variables:
+              AWS_ACCESS_KEY_ID: $AWS_KEY_YURI
+              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_YURI
+              AWS_DEFAULT_REGION: $AWS_REGION
+              IMAGE_NAME: prod_dbt_snowflake_dsaas
+              TAGS: '${DBT_SF_TAG}'
+        services:
+          - docker
+
+    - step: &airflow-var
+        name: Update DBT Image Airflow Variable
+        script:
+          - |
+            git fetch
+            git pull
+            export DBT_SF_TAG=$(cat dbt_project.yml | grep ^version: | grep -o "'.*'" | tr -d "'")
+          - export DBT_SF_IMAGE="835825599161.dkr.ecr.${AWS_REGION}.amazonaws.com/prod_dbt_snowflake_dsaas:${DBT_SF_TAG}"
+          - |
+            docker run \
+            -e AWS_ACCESS_KEY_ID=${AWS_KEY_YURI} \
+            -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_YURI} \
+            -e AWS_DEFAULT_REGION=${AWS_REGION} \
+            amazon/aws-cli secretsmanager update-secret --secret-id dsaas-infra/prod/airflow/variables/DBT_SF_IMAGE --secret-string "${DBT_SF_IMAGE}"
+        services:
+          - docker
+
+    - step: &lint
+        name: SQL Fluff
+        script:
+          - pip install --upgrade pip
+          - pip install -r requirements.txt
+          - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+          - git remote update
+          - git fetch --all
+          - dbt deps
+          - mkdir ~/.dbt
+          - cp profiles.yml ~/.dbt
+          - diff-quality --fail-under 90 --violations sqlfluff --compare-branch origin/$BITBUCKET_PR_DESTINATION_BRANCH
+          - rm -rf ~/.dbt
+
+    - step: &test
+        name: Test DBT
+        caches:
+          - pip
+        script:
+          - pip install --upgrade pip
+          - pip install -r requirements.txt
+          - dbt deps --profiles-dir .
+          - dbt build --full-refresh --profiles-dir . --target ci
+
+pipelines:
+  pull-requests:
+    develop:
+    - step: *test
+    feature/*:
+    - step: *test
+    - step: *lint
+    hotfix/*:
+    - step: *lint
+  branches:
+    master:
+    - step: *release
+    - step: *airflow-var
+    develop:
+    - step: *test

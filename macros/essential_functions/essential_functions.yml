@@ -1,0 +1,6 @@
+version: 2
+
+macros:
+  - name: drop_schema_ci
+  - name: generate_schema_name
+  - name: grant_select_on_schemas
