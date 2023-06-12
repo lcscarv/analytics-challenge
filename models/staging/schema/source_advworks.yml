@@ -1,0 +1,215 @@
+version: 2
+
+sources:
+  - name: raw_sheets
+    description: Sources that will compose the analysis of adventure works
+    database: analytics_database
+    schema: adventure_works_int
+    tables:
+      - name: product
+        description: Table with informations about the products.
+        columns:
+          - name: CLASS
+            description: Year of the contract started
+          - name: COLOR
+            description: Contract team.
+          - name: DAYSTOMANUFACTURE
+            description: Order of contract
+          - name: FINISHEDGOODSFLAG
+            description: Contract squad
+          - name: LISTPRICE
+            description: Contract area.
+          - name: NAME
+            description: Contract manager
+          - name: PRODUCTID
+            description: Contract status
+          - name: PRODUCTLINE
+            description: Client name
+          - name: PRODUCTMODELID
+            description: Contract leader/Department manager.
+          - name: PRODUCTNUMBER
+            description: Id of deal
+          - name: PRODUCTSUBCATEGORYID
+            description: If the project is internal or external (for a client).
+          - name: REORDERPOINT
+            description: Contract vertical
+          - name: SAFETYSTOCKLEVEL
+            description: Contract execution type
+          - name: SELLENDDATE
+            description: Type of contract billing.
+          - name: SELLSTARTDATE
+            description: Backlog link
+          - name: STANDARDCOST
+            description: Name of the master contract.
+     
+
+      - name: person
+        description: Table with more specific information about the customer
+        columns:
+          - name: BUSINESSENTITYID
+            description: cti identification sequence
+          - name: EMAILPROMOTION
+            description: Definition of done.
+          - name: FIRSTNAME
+            description: Sector identification number.
+          - name: LASTNAME
+            description: Area identification number.
+          - name: MIDDLENAME
+            description: Activity identification number.
+          - name: NAMESTYLE
+            description: Level definition
+          - name: PERSONTYPE
+            description: Level definition
+          - name: SUFFIX
+            description: Level definition
+          - name: TITLE
+            description: Level definition
+
+      - name: creditcard
+        description: Table with information about customers credit card
+        columns:
+          - name: CARDNUMBER
+            description: cti identification sequence
+          - name: CARDTYPE
+            description: Definition of done.
+          - name: CREDITCARDID
+            description: Sector identification number.
+          - name: EXPMONTH
+            description: Area identification number.
+          - name: EXPYEAR
+            description: Activity identification number.
+
+      - name: customer
+        description: Table with more specific information about the customer
+        columns:
+          - name: CUSTOMERID
+            description: cti identification sequence
+          - name: PERSONID
+            description: Definition of done.
+          - name: STOREID
+            description: Area identification number.
+          - name: TERRITORYID
+            description: Activity identification number.
+          
+
+      - name: salesorderdetail
+        description: Table with more specific information about the customer
+        columns:
+          - name: CARRIERTRACKINGNUMBER
+            description: cti identification sequence
+          - name: ORDERQTY
+            description: Definition of done.
+          - name: PRODUCTID
+            description: Sector identification number.
+          - name: SALESORDERDETAILID
+            description: Activity identification number.
+          - name: SALESORDERID
+            description: Category identification number.
+          - name: SPECIALOFFERID
+            description: Level definition
+          - name: UNITPRICE
+            description: Level definition
+
+      - name: salesorderheader
+        description: Table with more specific information about the customer
+        columns:
+          - name: ACCOUNTNUMBER
+            description: cti identification sequence
+          - name: BILLTOADDRESSID
+            description: Definition of done.
+          - name: CREDITCARDAPPROVALCODE
+            description: Sector identification number.
+          - name: CREDITCARDID
+            description: Area identification number.
+          - name: CURRENCYRATEID
+            description: Activity identification number.
+          - name: CUSTOMERID
+            description: Category identification number.
+          - name: DUEDATE
+            description: Level definition
+          - name: FREIGHT
+            description: Level definition
+          - name: ONLINEORDERFLAG
+            description: Level definition  
+          - name: ORDERDATE
+            description: Level definition
+          - name: PURCHASEORDERNUMBER
+            description: Level definition
+          - name: REVISIONNUMBER
+            description: Definition of done.
+          - name: SALESORDERID
+            description: Area identification number.
+          - name: SALESPERSONID
+            description: Activity identification number.
+          - name: SHIPDATE
+            description: Category identification number.
+          - name: SHIPMETHODID
+            description: Level definition
+          - name: SHIPTOADDRESSID
+            description: Level definition
+          - name: STATUS
+            description: Level definition  
+          - name: SUBTOTAL
+            description: Level definition
+          - name: TAXAMT
+            description: Level definition
+          - name: TERRITORYID
+            description: Level definition  
+          - name: TOTALDUE
+            description: Level definition
+         
+      - name: salesreason
+        description: Table with more specific information about the customer
+        columns:
+          - name: NAME
+            description: cti identification sequence
+          - name: REASONTYPE
+            description: Definition of done.
+          - name: SALESREASONID
+            description: Sector identification number.
+            
+      - name: specialoffer
+        description: Table with more specific information about the customer
+        columns:
+          - name: CATEGORY
+            description: cti identification sequence
+          - name: DESCRIPTION
+            description: Definition of done.
+          - name: DISCOUNTPCT
+            description: Sector identification number.
+          - name: ENDDATE
+            description: Area identification number.
+          - name: MAXQTY
+            description: Activity identification number.
+          - name: MINQTY
+            description: Category identification number.
+          - name: SPECIALOFFERID
+            description: Level definition
+          - name: STARTDATE
+            description: Level definition
+          - name: TYPE
+
+      - name: stateprovince
+        description: Table with more specific information about the customer
+        columns:
+          - name: COUNTRYREGIONCODE
+            description: cti identification sequence
+          - name: ISONLYSTATEPROVINCEFLAG
+            description: Definition of done.
+          - name: NAME
+            description: Area identification number.
+          - name: STATEPROVINCECODE
+            description: Category identification number.
+          - name: STATEPROVINCEID
+            description: Level definition
+          - name: TERRITORYID
+
+      - name: countryregion
+        description: Table with more specific information about the customer
+        columns:
+          - name: COUNTRYREGIONCODE
+            description: cti identification sequence
+          - name: NAME
+            description: Area identification number.
+       
+          

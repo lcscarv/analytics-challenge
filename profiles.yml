@@ -1,4 +1,4 @@
-dbt_indicium:
+dbt_analytics:
   target: "{{ env_var('DBT_PROFILE_TARGET', 'dev') }}"
   outputs:
     dev:
