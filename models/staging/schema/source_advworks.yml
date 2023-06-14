@@ -167,6 +167,34 @@ sources:
             description: Definition of done.
           - name: SALESREASONID
             description: Sector identification number.
+
+      - name: salesorderheadersalesreason
+        description: Table with more specific information about the customer
+        columns:
+          - name: SALESORDERID
+            description: Definition of done.
+          - name: SALESREASONID
+            description: Sector identification number.
+
+      - name: salesterritory
+        description: Table with more specific information about the customer
+        columns:
+          - name: COSTLASTYEAR
+            description: cti identification sequence
+          - name: COSTYTD
+            description: Definition of done.
+          - name: COUNTRYREGIONCODE
+            description: Sector identification number.
+          - name: GROUP
+            description: Sector identification number.
+          - name: NAME
+            description: Sector identification number.
+          - name: SALESLASTYEAR
+            description: Sector identification number.
+          - name: SALESYTD
+            description: Sector identification number.
+          - name: TERRITORYID
+            description: Sector identification number.
             
       - name: specialoffer
         description: Table with more specific information about the customer
