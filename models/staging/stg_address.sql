@@ -7,7 +7,7 @@ WITH address AS (
      , postalcode as postal_code
      , stateprovinceid as state_province_id
     
-    FROM {{souce('raw_sheets','address')}}
+    FROM {{source('raw_sheets','address')}}
     )
 
 SELECT * FROM address

@@ -7,7 +7,7 @@ WITH sales_order_detail AS (
      , unitprice as unit_price
      , unitpricediscount as unit_price_discount
     
-    FROM {{source('rawsheets','salesorderdetail')}}
+    FROM {{source('raw_sheets','salesorderdetail')}}
     )
 
 SELECT * FROM sales_order_detail

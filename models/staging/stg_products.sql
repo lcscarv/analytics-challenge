@@ -10,7 +10,11 @@ with products as (
         , finishedgoodsflag as product_good_finish
         , reorderpoint as product_stock_qty_to_reorder
         , safetystocklevel as product_min_stock_qty
-        , color as product_color
+        , CASE 
+            WHEN color IS NULL 
+                THEN 'not Specified'
+            ELSE color
+        END AS product_color
         , CASE 
             WHEN class = 'L'
                 THEN 'Low'
