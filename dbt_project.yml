@@ -35,8 +35,8 @@ models:
     # Config indicated by + and applies to all files under models/example/
     
     staging: &staging
-      +materialized: ephemeral
+      +materialized: view
     intermediate: &intermediate
-      +materialized: ephemeral
+      +materialized: view
     marts: &marts
       +materialized: table
