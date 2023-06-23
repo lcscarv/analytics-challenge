@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: raw_sheets
     description: Sources that will compose the analysis of adventure works
-    database: analytics_database
+    database: my_database
     schema: adventure_works_int
     tables:
       - name: product
@@ -238,6 +238,22 @@ sources:
           - name: COUNTRYREGIONCODE
             description: cti identification sequence
           - name: NAME
+            description: Area identification number.
+
+      - name: address
+        description: Table with more specific information about the customer
+        columns:
+          - name: addressid
+            description: cti identification sequence
+          - name: addressline1
+            description: Area identification number.
+          - name: addressline2
+            description: Area identification number.
+          - name: city
+            description: Area identification number.
+          - name: postalcode
+            description: Area identification number.
+          - name: stateprovinceid
             description: Area identification number.
        
           
