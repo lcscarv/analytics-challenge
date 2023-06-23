@@ -1,0 +1,17 @@
+version: 2
+
+
+models:
+
+  - name: stg_country_region
+    description: Lookup table containing the ISO standard codes for countries and regions.
+    columns:
+
+      - name: country_region_code
+        description: SO standard code for countries and regions.
+        tests:
+          - not_null
+          
+
+      - name: country_name
+        description: Country or region name. 

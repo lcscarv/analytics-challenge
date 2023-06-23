@@ -1,0 +1,26 @@
+version: 2
+
+
+models:
+
+  - name: stg_customers
+    description: Table that compiles information about Adventure Works customers.
+    columns:
+
+      - name: customer_id
+        description: Unique ID for the customer.
+        tests:
+          - not_null
+          - unique
+
+      - name: person_id
+        description: Unique ID for the person.
+        tests:
+          - not_null
+        
+
+      - name: territory_id
+        description: ID of the territory in which the customer is located.
+        tests:
+          - not_null
+          

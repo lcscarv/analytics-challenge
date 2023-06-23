@@ -1,0 +1,23 @@
+version: 2
+
+
+models:
+
+  - name: stg_creditcard
+    description: Table that compiles information about credit cards.
+    columns:
+
+      - name: credit_card_id
+        description: Primary key for CreditCard records.
+        tests:
+          - not_null
+          - unique
+
+      - name: card_type
+        description: Credit card name. 
+
+      - name: card_exp_month
+        description: Credit card expiration month.
+
+      - name: card_exp_year
+        description: Credit card expiration year.

@@ -1,0 +1,33 @@
+version: 2
+
+
+models:
+
+  - name: stg_sales_order_dtl
+    description: ndividual products associated with a specific sales order.
+    columns:
+
+      - name: sales_order_detail_id
+        description:  One incremental unique number per product sold.
+        tests:
+          - not_null
+          - unique
+
+      - name: sales_order_id
+        description: ID for sale order. 
+        tests:
+          - not_null
+
+      - name: product_id
+        description: ID of the product sold to customer.
+        tests:
+          - not_null
+
+      - name: order_qty
+        description: Quantity ordered per product.
+
+      - name: unit_price
+        description: Selling price of a single product.
+
+      - name: unit_price_discount
+        description: Discount amount.

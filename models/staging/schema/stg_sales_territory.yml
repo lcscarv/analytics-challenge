@@ -1,0 +1,29 @@
+version: 2
+
+
+models:
+
+  - name: stg_sales_territory
+    description: Sales territory lookup table.
+    columns:
+
+      - name: territory_id
+        description:  Territory identification number.
+        tests:
+          - not_null
+          - unique
+
+      - name: sales_last_year
+        description: Sales in the territory the previous year. 
+
+      - name: sales_year_to_date
+        description: Sales in the territory year to date.
+
+      - name: group
+        description: Geographic area to which the sales territory belong.
+
+      - name: country_region_code
+        description: ISO standard country or region code.
+
+      - name: group_name
+        description: Sales territory description.

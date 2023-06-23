@@ -1,0 +1,17 @@
+version: 2
+
+
+models:
+
+  - name: stg_sales_order_hd_reason
+    description: Cross-reference table mapping sales orders to sales reason codes.
+    columns:
+
+      - name: sales_order_id
+        description: Unique ID for the sale order.
+        tests:
+          - not_null
+          - unique
+
+      - name: sales_reason_id
+        description: ID for SalesReason records. 

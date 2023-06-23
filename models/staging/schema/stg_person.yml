@@ -1,0 +1,32 @@
+version: 2
+
+
+models:
+
+  - name: stg_person
+    description: Human beings involved with AdventureWorks like employees, customer contacts, and vendor contacts.
+    columns:
+
+      - name: business_entity_id
+        description: Unique ID for the product.
+        tests:
+          - not_null
+          - unique
+
+      - name: person_first_name
+        description: First name of the person. 
+
+      - name: person_middle_name
+        description: Middle name or middle initial of the person.
+
+      - name: person_last_name
+        description: Last name of the person.
+
+      - name: person_type
+        description: Primary type of person.
+
+      - name: person_suffix
+        description: Surname suffix. For example, Sr. or Jr.
+
+      - name: person_title
+        description: A courtesy title. For example, Mr. or Ms.

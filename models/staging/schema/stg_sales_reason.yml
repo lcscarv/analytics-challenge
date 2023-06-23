@@ -1,0 +1,20 @@
+version: 2
+
+
+models:
+
+  - name: stg_sales_reason
+    description: Lookup table of customer purchase reasons.
+    columns:
+
+      - name: sales_reason_id
+        description: Unique ID for sales reason records.
+        tests:
+          - not_null
+          - unique
+
+      - name: reason_type
+        description: Category the sales reason belongs to. 
+
+      - name: reason_name
+        description: Sales reason description.
