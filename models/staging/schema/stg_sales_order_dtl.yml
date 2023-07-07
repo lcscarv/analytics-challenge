@@ -31,3 +31,9 @@ models:
 
       - name: unit_price_discount
         description: Discount amount.
+
+      - name: gross_revenue
+        description: Gross revenue of the sales.
+
+      - name: net_income
+        description: Revenue of the sales considering the discounts.
