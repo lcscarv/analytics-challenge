@@ -12,6 +12,7 @@ WITH
          , country_region_code
          , customer_city
          , customer_address
+         , customer_state
          , customer_country
         
         FROM {{ref('int_customers')}}
