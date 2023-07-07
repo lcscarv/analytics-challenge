@@ -9,6 +9,9 @@ models:
 
       - name: sales_order_id
         description: Unique ID for the sale order.
+        tests:
+         - unique
+         - not_null
 
       - name: customer_id
         description: Customer identification number. 

@@ -15,6 +15,9 @@ models:
 
       - name: product_id
         description: Unique ID for the product.
+        tests:
+         - unique
+         - not_null
 
       - name: product_manufacture_time
         description: Number of days required to manufacture the product. 
