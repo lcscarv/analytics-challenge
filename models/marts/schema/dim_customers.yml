@@ -1,0 +1,52 @@
+version: 2
+
+
+models:
+
+  - name: dim_customers
+    description: Dimension table that compiles information about Adventure Works customers.
+    columns:
+
+      - name: customer_sk
+        description: Surrogate key for customers table.
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: Unique ID for the customer.
+      
+      - name: person_id
+        description: Unique ID for the person.
+
+      - name: credit_card_id
+        description: Unique ID for CreditCard records.
+        
+      - name: territory_id
+        description: ID of the territory in which the customer is located.
+
+      - name: state_province_id
+        description: State, province, or country/region ID.
+
+      - name: country_region_code
+        description: ISO standard country or region code.
+
+      - name: card_type
+        description: Credit card name.
+      
+      - name: customer_name
+        description: Complete name of the customer.
+
+      - name: customer_state
+        description: Name of the state of the customer.
+
+      - name: customer_city
+        description: City of the customer.
+      
+      - name: customer_country
+        description: Country of the customer.
+
+      - name: customer_address
+        description: Address of the customer.
+
+      

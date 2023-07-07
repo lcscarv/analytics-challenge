@@ -1,0 +1,32 @@
+version: 2
+
+
+models:
+
+  - name: dim_sales_reason
+    description: Dimension table of customer purchase reasons.
+    columns:
+
+      - name: reason_sk
+        description:  Surrogate key for Sales Reason table.
+        tests:
+          - not_null
+          - unique
+
+      - name: sales_order_id
+        description: Unique ID for the sale order.
+        tests:
+          - not_null
+          - unique
+
+      - name: sales_reason_id
+        description: Unique ID for sales reason records.
+        tests:
+          - not_null
+          - unique
+
+      - name: reason_type
+        description: Category the sales reason belongs to. 
+
+      - name: reason_name
+        description: Sales reason description.

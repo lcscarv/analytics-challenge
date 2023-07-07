@@ -1,0 +1,53 @@
+version: 2
+
+
+models:
+
+  - name: fct_sales_order_header
+    description: General sales order information.
+    columns:
+
+      - name: sales_order_id
+        description: Unique ID for the sale order.
+
+      - name: customer_id
+        description: Customer identification number. 
+
+      - name: credit_card_id
+        description: Credit card identification number.
+
+      - name: territory_id
+        description: Territory in which the sale was made.
+
+      - name: address_id
+        description: Customer shipping address.
+
+      - name: order_date
+        description: Dates the sales order was created.
+
+      - name: order_ship_date
+        description: Date the order was shipped to the customer.
+
+      - name: due_date  
+        description: Indicates whether the product has a good finish quality leading it to be sallable.
+
+      - name: purchase_number
+        description: Customer purchase order number reference.
+
+      - name: revision_number
+        description: Incremental number to track changes to the sales order over time.
+
+      - name: order_status
+        description: Order current status.
+
+      - name: online_ordered
+        description: Indicates whether the Order placed by sales person or placed online by customer.
+
+      - name: subtotal
+        description: Sales subtotal.
+
+      - name: tax_amount
+        description: Tax amount.
+
+      - name: total_due
+        description: Total due from customer. Computed as Subtotal + TaxAmt + Freight.

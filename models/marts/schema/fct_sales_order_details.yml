@@ -1,0 +1,36 @@
+version: 2
+
+
+models:
+
+  - name: fct_sales_order_details
+    description: Fact table with details about the orders.
+    columns:
+
+      - name: sales_order_detail_id
+        description:  One incremental unique number per product sold.
+
+      - name: sales_order_id
+        description: ID for sale order. 
+        tests:
+          - not_null
+
+      - name: product_id
+        description: ID of the product sold to customer.
+        tests:
+          - not_null
+
+      - name: order_qty
+        description: Quantity ordered per product.
+
+      - name: unit_price
+        description: Selling price of a single product.
+
+      - name: unit_price_discount
+        description: Discount amount.
+
+      - name: gross_revenue
+        description: Gross revenue of the sales.
+
+      - name: net_income
+        description: Revenue of the sales considering the discounts.

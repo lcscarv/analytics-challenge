@@ -1,0 +1,60 @@
+version: 2
+
+
+models:
+
+  - name: dim_products
+    description: Dimension Table that compiles information about Adventure Works products.
+    columns:
+
+      - name: product_sk
+        description: Surrogate key for products table.
+        tests:
+          - not_null
+          - unique
+
+      - name: product_id
+        description: Unique ID for the product.
+
+      - name: product_manufacture_time
+        description: Number of days required to manufacture the product. 
+
+      - name: product_sell_price
+        description: Selling price.
+
+      - name: product_standard_cost
+        description: Standard cost of the product.
+
+      - name: product_name
+        description: Name of the product.
+
+      - name: product_number
+        description: Unique product identification number.
+
+      - name: product_house_manufactured
+        description: Indicates whether the product is purchased from a supplier or house manufactured
+
+      - name: product_stock_qty_to_reorder
+        description: Inventory level that triggers a purchase order or work order.
+
+      - name: product_min_stock_qty
+        description: Minimum inventory quantity.
+
+      - name: product_color
+        description: Product color.
+
+      - name: product_class
+        description: Indicates whether the product is from class High, Medium or Low
+
+      - name: product_line
+        description: Indicates whether a product is suited for Road, Mountain, Touring or Standard.
+
+      - name: product_style
+        description: Indicates whether the product is intended for men, women or is a universal product.
+
+      - name: product_sell_start_date
+        description: Date the product was available for sale.
+
+      - name: product_availability
+        description: Indicates whether a product is still for sale or not.
+      
