@@ -1,4 +1,4 @@
-# Modelo de dbt para o Projeto da  (Português)
+# Modelo de dbt para o Projeto da Adventure Works (Português)
 
 Este repo apresenta a estrutura de ELT utilizada no projeto de implementação de infraestrutura de analytics na **Indicium**. Os dados são extraídos de diversas fontes de dados, como Bitrix, Planilhas, Redes Sociais... e armazenados no **Amazon S3**. Uma vez executada esta etapa, os dados são inseridos no **Snowflake** onde, efetivamente, começam as etapas de transformação dos dados utilizando-se o dbt. O pipeline é orquestrado pelo **Airflow**.
 
