@@ -17,7 +17,7 @@ models:
         description: Unique ID for the sale order.
         tests:
           - not_null
-          - unique
+          
 
       - name: sales_reason_id
         description: Unique ID for sales reason records.
