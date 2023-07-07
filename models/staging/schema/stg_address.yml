@@ -29,7 +29,6 @@ models:
         description: Unique identification number for the state or province.
         tests:
           - not_null
-          - unique
 
       
       
