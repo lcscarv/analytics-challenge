@@ -32,7 +32,7 @@ models:
         description: Date the order was shipped to the customer.
 
       - name: due_date  
-        description: Indicates whether the product has a good finish quality leading it to be sallable.
+        description: Date the order is due to the customer.
 
       - name: purchase_number
         description: Customer purchase order number reference.
