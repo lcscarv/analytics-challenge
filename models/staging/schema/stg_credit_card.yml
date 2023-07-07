@@ -12,6 +12,9 @@ models:
         tests:
           - not_null
           - unique
+          
+      - name: person_id
+        description: Unique ID for the person.
 
       - name: card_type
         description: Credit card name. 
