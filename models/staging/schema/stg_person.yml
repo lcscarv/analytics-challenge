@@ -8,7 +8,7 @@ models:
     columns:
 
       - name: business_entity_id
-        description: Unique ID for the product.
+        description: Unique ID for the person.
         tests:
           - not_null
           - unique
