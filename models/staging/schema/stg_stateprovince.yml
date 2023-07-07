@@ -19,6 +19,9 @@ models:
       - name: state_province_code
         description: ISO standard state or province code.
 
+      - name: state_name
+        description: Name of the state.
+
       - name: country_region_code
         description: ISO standard country or region code.
 
