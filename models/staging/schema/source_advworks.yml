@@ -9,251 +9,305 @@ sources:
       - name: product
         description: Table with informations about the products.
         columns:
-          - name: CLASS
-            description: Year of the contract started
-          - name: COLOR
-            description: Contract team.
-          - name: DAYSTOMANUFACTURE
-            description: Order of contract
-          - name: FINISHEDGOODSFLAG
-            description: Contract squad
-          - name: LISTPRICE
-            description: Contract area.
-          - name: NAME
-            description: Contract manager
           - name: PRODUCTID
             description: Contract status
+            tests:
+              - not_null
+              - unique
+          - name: CLASS
+            description: Indicates whether the product is intended for men, women or is a universal product.
+          - name: COLOR
+            description: Product color.
+          - name: DAYSTOMANUFACTURE
+            description: Number of days required to manufacture the product. 
+          - name: FINISHEDGOODSFLAG
+            description: Indicates whether the product has a good finish quality leading it to be sallable.
+          - name: LISTPRICE
+            description: Selling Price.
+          - name: NAME
+            description: Product name.
           - name: PRODUCTLINE
-            description: Client name
+            description: Indicates whether a product is suited for Road, Mountain, Touring or Standard.
           - name: PRODUCTMODELID
-            description: Contract leader/Department manager.
+            description: Product is a member of this product model. 
           - name: PRODUCTNUMBER
-            description: Id of deal
+            description: Unique product identification number.
           - name: PRODUCTSUBCATEGORYID
-            description: If the project is internal or external (for a client).
+            description: Subcategory identification of the product.
           - name: REORDERPOINT
-            description: Contract vertical
+            description: Inventory level that triggers a purchase order or work order.
           - name: SAFETYSTOCKLEVEL
-            description: Contract execution type
+            description: Minimum inventory quantity.
           - name: SELLENDDATE
-            description: Type of contract billing.
+            description: Date the product was not available for sale.
           - name: SELLSTARTDATE
-            description: Backlog link
+            description: Date the product was available for sale.
           - name: STANDARDCOST
-            description: Name of the master contract.
+            description: Standard cost of the product.
      
 
       - name: person
-        description: Table with more specific information about the customer
+        description: Table with more specific information about the person
         columns:
           - name: BUSINESSENTITYID
-            description: cti identification sequence
+            description: Unique ID for the person.
+            tests:
+              - not_null
+              - unique
+
           - name: EMAILPROMOTION
-            description: Definition of done.
+            description: to check if the contact wish or not to receive e-mail promotion.
           - name: FIRSTNAME
-            description: Sector identification number.
+            description: First name of the person. 
           - name: LASTNAME
-            description: Area identification number.
+            description: Last name of the person.
           - name: MIDDLENAME
-            description: Activity identification number.
+            description: Middle name or middle initial of the person.
           - name: NAMESTYLE
-            description: Level definition
+            description:  To check if first and last name are stored in western style.
           - name: PERSONTYPE
-            description: Level definition
+            description: Primary type of person.
           - name: SUFFIX
-            description: Level definition
+            description: Surname suffix. For example, Sr. or Jr.
           - name: TITLE
-            description: Level definition
+            description: A courtesy title. For example, Mr. or Ms.
 
       - name: creditcard
         description: Table with information about customers credit card
         columns:
-          - name: CARDNUMBER
-            description: cti identification sequence
-          - name: CARDTYPE
-            description: Definition of done.
           - name: CREDITCARDID
-            description: Sector identification number.
+            description: Primary key for CreditCard records.
+            tests:
+              - not_null
+              - unique
+          - name: CARDNUMBER
+            description: Credit card number.
+          - name: CARDTYPE
+            description: Credit card type.
           - name: EXPMONTH
-            description: Area identification number.
+            description: Credit card expiration month.
           - name: EXPYEAR
-            description: Activity identification number.
+            description: Credit card expiration year.
+
+      - name: personcreditcard
+        description: Table that relates customer and the credit card on his possession.
+        columns:
+          - name: CREDITCARDID
+            description: Primary key for CreditCard records.
+          - name: BUSINESSENTITYID
+            description: Unique ID for the person.
+            tests:
+              - not_null
+              - unique
 
       - name: customer
         description: Table with more specific information about the customer
         columns:
           - name: CUSTOMERID
-            description: cti identification sequence
+            description: Unique ID for the customer.
+            tests:
+              - not_null
+              - unique
           - name: PERSONID
-            description: Definition of done.
+            description: Unique ID for the person.
           - name: STOREID
-            description: Area identification number.
+            description: Unique ID for the store.
           - name: TERRITORYID
-            description: Activity identification number.
+            description: ID of the territory in which the customer is located.
           
 
       - name: salesorderdetail
-        description: Table with more specific information about the customer
+        description: Individual products associated with a specific sales order.
         columns:
-          - name: CARRIERTRACKINGNUMBER
-            description: cti identification sequence
-          - name: ORDERQTY
-            description: Definition of done.
-          - name: PRODUCTID
-            description: Sector identification number.
           - name: SALESORDERDETAILID
-            description: Activity identification number.
+            description: One incremental unique number per product sold.
+            tests:
+              - not_null
+              - unique
+          - name: CARRIERTRACKINGNUMBER
+            description: Shipment tracking number supplied by the shipper.
+          - name: ORDERQTY
+            description: Quantity ordered per product.
+          - name: PRODUCTID
+            description: ID of the product sold to customer
+          
           - name: SALESORDERID
-            description: Category identification number.
+            description: ID for sale order.
+            tests:
+              - not_null
           - name: SPECIALOFFERID
-            description: Level definition
+            description: Promotional code.
           - name: UNITPRICE
-            description: Level definition
+            description: Selling price of a single product.
+          - name: UNITPRICEDISCOUNT
+            description: Discount amount.
 
       - name: salesorderheader
-        description: Table with more specific information about the customer
+        description: General sales order information.
         columns:
-          - name: ACCOUNTNUMBER
-            description: cti identification sequence
-          - name: BILLTOADDRESSID
-            description: Definition of done.
-          - name: CREDITCARDAPPROVALCODE
-            description: Sector identification number.
-          - name: CREDITCARDID
-            description: Area identification number.
-          - name: CURRENCYRATEID
-            description: Activity identification number.
-          - name: CUSTOMERID
-            description: Category identification number.
-          - name: DUEDATE
-            description: Level definition
-          - name: FREIGHT
-            description: Level definition
-          - name: ONLINEORDERFLAG
-            description: Level definition  
-          - name: ORDERDATE
-            description: Level definition
-          - name: PURCHASEORDERNUMBER
-            description: Level definition
-          - name: REVISIONNUMBER
-            description: Definition of done.
           - name: SALESORDERID
-            description: Area identification number.
+            description: Unique ID for the sale order.
+            tests:
+              - not_null
+              - unique
+          - name: ACCOUNTNUMBER
+            description: Financial accounting number reference.
+          - name: BILLTOADDRESSID
+            description: Customer billing address.
+          - name: CREDITCARDAPPROVALCODE
+            description: Approval code provided by the credit card company.
+          - name: CREDITCARDID
+            description: Credit card identification number.
+          - name: CURRENCYRATEID
+            description: Currency exchange rate used.
+          - name: CUSTOMERID
+            description: Customer identification number. 
+          - name: DUEDATE
+            description: Date the order is due to the customer.
+          - name: FREIGHT
+            description: Shipping cost
+          - name: ONLINEORDERFLAG
+            description: Indicates whether the Order placed by sales person or placed online by customer. 
+          - name: ORDERDATE
+            description: Dates the sales order was created.
+          - name: PURCHASEORDERNUMBER
+            description: Customer purchase order number reference
+          - name: REVISIONNUMBER
+            description: incremental number to track changes to the sales order over time.
           - name: SALESPERSONID
-            description: Activity identification number.
+            description: Sales person who created the sales order. 
           - name: SHIPDATE
-            description: Category identification number.
+            description: Date the order was shipped to the customer.
           - name: SHIPMETHODID
-            description: Level definition
+            description: Shipping method.
           - name: SHIPTOADDRESSID
-            description: Level definition
+            description: Customer shipping address
           - name: STATUS
-            description: Level definition  
+            description: Order current status. 
           - name: SUBTOTAL
-            description: Level definition
+            description: Sales subtotal.
           - name: TAXAMT
-            description: Level definition
+            description: Tax amount.
           - name: TERRITORYID
-            description: Level definition  
+            description: Territory in which the sale was made. 
           - name: TOTALDUE
             description: Level definition
          
       - name: salesreason
-        description: Table with more specific information about the customer
+        description: Lookup table of customer purchase reasons.
         columns:
           - name: NAME
-            description: cti identification sequence
+            description: Sales reason description.
           - name: REASONTYPE
-            description: Definition of done.
+            description: Category the sales reason belongs to.
           - name: SALESREASONID
-            description: Sector identification number.
+            description: Unique ID for sales reason records.
 
       - name: salesorderheadersalesreason
-        description: Table with more specific information about the customer
+        description: Cross-reference table mapping sales orders to sales reason codes.
         columns:
           - name: SALESORDERID
-            description: Definition of done.
+            description: Unique ID for the sale order.
+            tests:
+              - not_null
           - name: SALESREASONID
-            description: Sector identification number.
+            description: ID for SalesReason records. 
+            tests:
+              - not_null
 
       - name: salesterritory
-        description: Table with more specific information about the customer
+        description: Sales territory lookup table.
         columns:
-          - name: COSTLASTYEAR
-            description: cti identification sequence
-          - name: COSTYTD
-            description: Definition of done.
-          - name: COUNTRYREGIONCODE
-            description: Sector identification number.
-          - name: GROUP
-            description: Sector identification number.
-          - name: NAME
-            description: Sector identification number.
-          - name: SALESLASTYEAR
-            description: Sector identification number.
-          - name: SALESYTD
-            description: Sector identification number.
           - name: TERRITORYID
-            description: Sector identification number.
+            description: Territory identification number.
+            tests:
+              - not_null
+              - unique
+          - name: COSTLASTYEAR
+            description: Costs in the territory the previous year.
+          - name: COSTYTD
+            description: Costs in the territory year to date.
+          - name: COUNTRYREGIONCODE
+            description: ISO standard country or region code.
+          - name: GROUP
+            description: Geographic area to which the sales territory belong.
+          - name: NAME
+            description: Sales territory description.
+          - name: SALESLASTYEAR
+            description: Sales in the territory the previous year.
+          - name: SALESYTD
+            description: Sales in the territory year to date.
+          
             
       - name: specialoffer
-        description: Table with more specific information about the customer
+        description: Sale discounts lookup table.
         columns:
-          - name: CATEGORY
-            description: cti identification sequence
-          - name: DESCRIPTION
-            description: Definition of done.
-          - name: DISCOUNTPCT
-            description: Sector identification number.
-          - name: ENDDATE
-            description: Area identification number.
-          - name: MAXQTY
-            description: Activity identification number.
-          - name: MINQTY
-            description: Category identification number.
           - name: SPECIALOFFERID
-            description: Level definition
+            description: Primary key for SpecialOffer records.
+            tests:
+              - not_null
+              - unique
+          - name: CATEGORY
+            description: Group the discount applies to such as Reseller or Customer.
+          - name: DESCRIPTION
+            description: Discount description.
+          - name: DISCOUNTPCT
+            description: Discount precentage.
+          - name: ENDDATE
+            description: Discount end date
+          - name: MAXQTY
+            description: Maximum discount percent allowed.
+          - name: MINQTY
+            description: Minimum discount percent allowed.
           - name: STARTDATE
-            description: Level definition
+            description: Discount start date.
           - name: TYPE
+            description: Discount type category
 
       - name: stateprovince
-        description: Table with more specific information about the customer
+        description: State and province lookup table.
         columns:
-          - name: COUNTRYREGIONCODE
-            description: cti identification sequence
-          - name: ISONLYSTATEPROVINCEFLAG
-            description: Definition of done.
-          - name: NAME
-            description: Area identification number.
-          - name: STATEPROVINCECODE
-            description: Category identification number.
           - name: STATEPROVINCEID
-            description: Level definition
+            description: Primary key for StateProvince records.
+            tests:
+              - not_null
+              - unique
+          - name: COUNTRYREGIONCODE
+            description: ISO standard code for countries and regions.
+          - name: ISONLYSTATEPROVINCEFLAG
+            description: Indicates if StateProvinceCode exists. If unavailable, uses CountryRegionCode.
+          - name: NAME
+            description: State or province description.
+          - name: STATEPROVINCECODE
+            description: ISO standard state or province code.
           - name: TERRITORYID
+            description: ID of the territory in which the state or province is located
 
       - name: countryregion
-        description: Table with more specific information about the customer
+        description: Lookup table containing the ISO standard codes for countries and regions.
         columns:
           - name: COUNTRYREGIONCODE
-            description: cti identification sequence
+            description: ISO standard code for countries and regions.
           - name: NAME
-            description: Area identification number.
+            description: Country or region name.
 
       - name: address
-        description: Table with more specific information about the customer
+        description: Street address information for customers, employees, and vendors.
         columns:
           - name: addressid
-            description: cti identification sequence
+            description: Primary key for Address records.
+            tests:
+              - not_null
+              - unique
           - name: addressline1
-            description: Area identification number.
+            description: First street address line
           - name: addressline2
-            description: Area identification number.
+            description: Second street address line.
           - name: city
-            description: Area identification number.
+            description: Name of the city
           - name: postalcode
-            description: Area identification number.
+            description: Postal code for the street address.
           - name: stateprovinceid
-            description: Area identification number.
+            description: Unique identification number for the state or province
        
           
