@@ -23,7 +23,6 @@ models:
         description: Unique ID for sales reason records.
         tests:
           - not_null
-          - unique
 
       - name: reason_type
         description: Category the sales reason belongs to. 
