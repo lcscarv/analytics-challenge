@@ -1,6 +1,8 @@
+
+## Modelagem de Dados da Adventure Works com DBT
 Este repositório contém um projeto de modelagem de dados utilizando o DBT (Data Build Tool) com a base de dados da Adventure Works. O objetivo é fornecer uma estrutura e pipeline de dados para análise e tomada de decisões usando a Adventure Works como fonte de dados.
 
-Pré-requisitos
+### Pré-requisitos
 Antes de começar, verifique se você possui os seguintes itens instalados em sua máquina:
 
 DBT versão 1.5.1): Ferramenta para orquestração e criação de modelos de dados.
@@ -9,8 +11,7 @@ Snowflake: Um data warehouse baseado em nuvem usado como destino dos dados model
 
 Banco de dados Adventure Works: O banco de dados da Adventure Works é necessário para este projeto. Certifique-se de ter acesso a sua conexão.
 
-Configuração
-
+### Configuração
 Clone este repositório em sua máquina local:
 
 ```
@@ -79,7 +80,7 @@ dbt run
 ```
 Os resultados serão gerados na pasta target, e o banco de dados Snowflake será atualizado com as transformações de dados definidas nos modelos.
 
-Contribuição
+### Contribuição
 Contribuições são bem-vindas! Se você deseja contribuir com este projeto, siga os passos abaixo:
 
 Faça um fork deste repositório.
