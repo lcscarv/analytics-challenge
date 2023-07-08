@@ -14,37 +14,37 @@ Configuração
 Clone este repositório em sua máquina local:
 
 ```
-`git clone Https://github.com/lcscarv/analytics-challenge.git`
+git clone Https://github.com/lcscarv/analytics-challenge.git
 ```
 Execute a criação de um ambiente virtual utilizando o comando:
 
 ```
-`python -m venv venv`
+python -m venv venv
 ```
 
 É recomendada que a versão do Python utilizada seja a versão 3.8 Caso haja mais de uma versão em sua máquina utilize o comando:
 
 ```
-`py -3.8 -m venv venv`
+py -3.8 -m venv venv
 ```
 
 A ativação do ambiente virtual é feita pelos seguintes comandos:
 
 ```
 Windows
-`source venv/scripts/activate`
+source venv/scripts/activate
 Linux
-`Source venv/bin/activate`
+Source venv/bin/activate
 Powershell
-`.\venv\Scripts\activate.ps1`
+.\venv\Scripts\activate.ps1
 ```
 
  O próximo passo é instalar as bibliotecas listadas no arquivo **requirements.txt**. Isso pode ser executado através do [pip](https://pypi.org/project/pip/):
  
 ```
-- `pip install -r requirements.txt` ou
+ pip install -r requirements.txt ou
 
-- `python -m pip install -r requirements.txt` para alguns casos em que o comando anterior não funciona.
+ python -m pip install -r requirements.txt  para alguns casos em que o comando anterior não funciona.
 ```
 
 Configure as credenciais do banco de dados no arquivo .env. Substitua os valores <conta>, <warehouse>, <banco-de-dados>, <esquema>, <usuário> e <senha> pelas informações do seu ambiente Snowflake:
